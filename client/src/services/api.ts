@@ -1,11 +1,11 @@
-// Detect if running on localhost or production deployment
+// In local development on localhost:5173, Vite proxies /api. In production, always use the deployed Render backend API.
 const isLocalhost =
   typeof window !== 'undefined' &&
   (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
 
-const API_BASE =
-  ((import.meta as any).env?.VITE_API_URL as string) ||
-  (isLocalhost ? '/api' : 'https://aurahealth-ai-fwkw.onrender.com/api');
+const API_BASE = isLocalhost
+  ? '/api'
+  : 'https://aurahealth-ai-fwkw.onrender.com/api';
 
 export class ApiError extends Error {
   status: number;
@@ -28,18 +28,23 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
     ...options.headers,
   };
 
-  const response = await fetch(`${API_BASE}${endpoint}`, {
-    ...options,
-    headers,
-  });
+  try {
+    const response = await fetch(`${API_BASE}${endpoint}`, {
+      ...options,
+      headers,
+    });
 
-  const data = await response.json().catch(() => ({}));
+    const data = await response.json().catch(() => ({}));
 
-  if (!response.ok) {
-    throw new ApiError(data.message || 'An error occurred during network request', response.status, data);
+    if (!response.ok) {
+      throw new ApiError(data.message || 'Server returned an error', response.status, data);
+    }
+
+    return data;
+  } catch (err: any) {
+    if (err instanceof ApiError) throw err;
+    throw new ApiError(err.message || 'Unable to connect to healthcare API service', 500);
   }
-
-  return data;
 }
 
 export const api = {
