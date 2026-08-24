@@ -8,11 +8,16 @@ import bcrypt from 'bcryptjs';
 
 const app = express();
 
-// Middleware
+// CORS configuration supporting credentials and dynamic origins
 app.use(cors({
-  origin: '*',
+  origin: true, // Dynamically reflects origin (e.g. https://aurahealth-client.onrender.com or localhost)
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
+app.options('*', cors({ origin: true, credentials: true }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
