@@ -1,0 +1,31 @@
+{
+  "name": "aurahealth-ai",
+  "version": "1.0.0",
+  "description": "AuraHealth AI - Healthcare Appointment & Follow-up Manager with AI Triage, Concurrency Safe Booking, and Automated Follow-ups",
+  "main": "server/dist/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "build": "npm --prefix server run build && npm --prefix client run build",
+    "start": "npm --prefix server run start",
+    "install:all": "npm install && npm --prefix server install && npm --prefix client install",
+    "db:setup": "npm --prefix server run db:setup",
+    "db:seed": "npm --prefix server run db:seed",
+    "test:concurrency": "npm --prefix server run test:concurrency"
+  },
+  "keywords": [
+    "healthcare",
+    "appointments",
+    "ai-triage",
+    "concurrency-locking",
+    "telehealth",
+    "doctor-portal",
+    "patient-portal"
+  ],
+  "author": "AuraHealth Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
