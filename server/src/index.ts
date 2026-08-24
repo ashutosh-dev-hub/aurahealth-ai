@@ -217,6 +217,25 @@ async function ensureSeedData() {
   }
 }
 
+// Root welcome endpoint
+app.get('/', (req: Request, res: Response) => {
+  res.json({
+    status: 'online',
+    service: 'AuraHealth AI Backend REST API',
+    frontendApp: 'https://aurahealth-client.onrender.com/',
+    healthCheck: '/api/health',
+    endpoints: {
+      auth: '/api/auth',
+      doctors: '/api/doctors',
+      appointments: '/api/appointments',
+      consultations: '/api/consultations',
+      leaves: '/api/leaves',
+      medications: '/api/medications',
+      admin: '/api/admin',
+    },
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req: Request, res: Response) => {
   res.json({
