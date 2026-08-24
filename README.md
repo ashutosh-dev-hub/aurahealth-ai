@@ -1,13 +1,19 @@
 # AuraHealth AI — Healthcare Appointment & Follow-up Manager
 
-[![Node.js Version](https://img.shields.io/badge/Node.js-v20%2B-blue.svg)](https://nodejs.org)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue.svg)](https://www.typescriptlang.org)
-[![React](https://img.shields.io/badge/React-18-61DAFB.svg)](https://reactjs.org)
-[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC.svg)](https://tailwindcss.com)
-[![Prisma ORM](https://img.shields.io/badge/Prisma-5.22-2D3748.svg)](https://prisma.io)
+[![Live Application](https://img.shields.io/badge/Live%20Demo-aurahealth--client.onrender.com-0ea5e9?style=for-the-badge&logo=render)](https://aurahealth-client.onrender.com/)
+[![Backend API](https://img.shields.io/badge/API%20Endpoint-aurahealth--ai--fwkw.onrender.com-8b5cf6?style=for-the-badge&logo=render)](https://aurahealth-ai-fwkw.onrender.com/api/health)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > **AuraHealth AI** is a production-grade healthcare appointment and automated follow-up platform engineered with **concurrency-safe slot locking (5-minute TTL holds)**, **automated doctor leave conflict resolution**, **AI pre-visit symptom triage**, **patient-friendly post-visit care plans**, and **cron-driven medication adherence reminders**.
+
+---
+
+## 🌐 Live Deployed Application URLs
+
+- 🖥️ **Live Web Application (Frontend):** [https://aurahealth-client.onrender.com/](https://aurahealth-client.onrender.com/)
+- ⚙️ **Production REST API (Backend):** [https://aurahealth-ai-fwkw.onrender.com/](https://aurahealth-ai-fwkw.onrender.com/)
+- 🏥 **API Health Telemetry Endpoint:** [https://aurahealth-ai-fwkw.onrender.com/api/health](https://aurahealth-ai-fwkw.onrender.com/api/health)
+- 📄 **System Design Write-Up ($\le 800$ Words):** [SYSTEM_DESIGN.md](https://github.com/ashutosh-dev-hub/aurahealth-ai/blob/main/SYSTEM_DESIGN.md)
 
 ---
 
@@ -54,7 +60,7 @@
 
 ---
 
-## 🚀 Quickstart Guide
+## 🚀 Quickstart Guide (Local Development)
 
 ### Prerequisites
 - Node.js `v18+` or `v20+`
@@ -62,6 +68,10 @@
 
 ### 1. Clone & Install Dependencies
 ```bash
+# Clone the repository
+git clone https://github.com/ashutosh-dev-hub/aurahealth-ai.git
+cd aurahealth-ai
+
 # Install root dependencies
 npm install
 
